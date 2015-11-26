@@ -39,7 +39,7 @@
  *      Later we should make sure this category conforms to LXProxSeeNotificationsHandler so 
  *      these methods are only availble for objects that implements the protocol
  */
-@interface NSObject(LXProxSeeNotificationObserver)
+@interface NSObject(LXProxSeeNotificationObserver)<LXProxSeeNotificationsHandler>
 
 /*
  *  addProxSeeNotifcationObserver

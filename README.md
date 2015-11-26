@@ -38,7 +38,7 @@ During the course of operation of your application, you can send additional data
 
 One of the primary purposes of the SDK, however, is to allow a mobile application to listen for tag changes. As each beacon can have one or more tags associated with it, by acting upon the appearance or disappearance of a tag, you can easily handle approaching and leaving a beacon's region. In this respect, real beacons and virtual beacons (geo-fences) operate nearly identically (more on the differences in Key Concepts). The beacons' associated tags and positional information can be updated on the central platform without a need to update the SDK version nor the physical beacons that have been deployed.
 
-(On the iOS SDK) At any stage of the application lifecycle you can turn on and off the SDK. Turning off the SDK will stop monitoring beacons, broadcasting check-ins/check-outs and notifying of tag changes. Yet you can still update metadata.
+(On the iOS SDK) At any stage of the application lifecycle you can turn on and off the SDK. Turning off the SDK will stop monitoring beacons, broadcasting check-ins/check-outs, notifying of tag changes. updating metadata.
 
 ## <a name="key-concepts"></a>Key Concepts
 
@@ -93,7 +93,7 @@ Whereas, whenever a beacon is seen (or last seen) a check-in/check-out will occu
 ### <a name="metadata"></a>Metadata
 Metadata can be used to provide additional information about a user or their device, an example would be their user id within your system, their preferences, etc. The metadata sent will be associated to the unique id given to that user's specific device. When the SDK performs a check-in on seeing a new beacon, the last sent metadata will be associated with that check-in.
 
-While the function used is named "updateMetadata", be aware that this metadata is essentially fully versioned - each update sent will be stored as its own record. As such, it is recommended that you only send metadata when it has changed. Presently, if the same metadata is sent multiple times, the central platform will ignore (not store) any duplicate requests.
+While the function used is named "updateMetadata", be aware that this metadata is essentially fully versioned - each update sent will be stored as its own record. As such, it is recommended that you only send metadata when it has changed. If the SDK detects that the metadata has not changed from the previous request, it will not send the metadata again (it will, however, return a successful result to its CompletionHandler).
 
 Note that the key-value pairs will be stored as a JSON object in the central platform and you may wish to design your representation so that it is easily query-able later when you do reporting on it.
 
@@ -174,7 +174,7 @@ You also need to make sure to remove the observer before your object is dealloca
 
 ### <a name="turning-on-off-monitoring"></a>Turning On/Off Monitoring
 
-At any point of the application lifecycle you can turn on or off monitoring which will stop monitoring beacons, broadcasting check-ins/check-outs and notifying of tag changes. Yet you can still update metadata.
+At any point of the application lifecycle you can turn on or off the sdk which will stop monitoring beacons, stop broadcasting check-ins/check-outs, notifying of tag changes and updating metadata. 
 
 To turn off monitoring:
 
@@ -190,7 +190,7 @@ To turn on monitoring:
 
 ### <a name="updating-metadata"></a>Updating Metadata
 
-At any point of the application lifecycle you can update metadata. Example:
+Example:
 
 ```
 [[LXProxSeeSDKManager sharedInstance] updateMetadata:@{ @"key" : @"value" } completionHandler:^(BOOL success, NSError *error) {
