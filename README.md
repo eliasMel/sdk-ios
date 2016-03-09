@@ -125,7 +125,7 @@ Note that it is possible to have a check-in without a check-out time - network i
 
 5. At this point, the SDK is ready to use and your project can compile successfully. You will still need to obtain an API key to use the SDK.
 
-
+ProxSee SDK is also available via [CocoaPods.org](https://libraries.io/cocoapods/ProxSeeSDK).
 
 ## <a name="usage"></a>Usage
 

@@ -45,6 +45,7 @@
  *      Updating metadata with the same data more than once will only make one Api call. 
  *      In other terms if you keep executing the above providing the same data it will hit the server once. 
  *      Only when you change the date it hit the server.
+ *      No Metadata is send if proxsee is turned off.
  */
 
 - (void) updateMetadata:(NSDictionary *)object completionHandler:(void (^)(BOOL success, NSError *error))completionHandler;
@@ -55,8 +56,7 @@
  *
  *  Discussion:
  *      Determines whether Proxsee is turned on or off.
- *      Turning on and off ProxSee
- *      Turning off proxsee will still allow you to update metadata.
+ *      Turning on and off ProxSee SDK.
  */
 
 @property (nonatomic) BOOL isMonitoringEnabled;
