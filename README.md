@@ -103,7 +103,7 @@ A checkin-in/check-out forms a tuple for a device event and track beacon region 
 
 Note that it is possible to have a check-in without a check-out time - network interruptions, etc. could cause a missed check-out.
 
-(On the Android SDK) One special type of check-out is the implied check-out for a virtual beacon. This happens when the user's device does not properly detect that it has left a region but has detected a new beacon. Since virtual beacons may not be placed in close proximity with any other beacon, this results in an implied check-out with an additional flag "context.impliedCheckout=true" appearing in its deviceevent record.
+One special type of check-out is the implied check-out for a virtual beacon. This happens when the user's device does not properly detect that it has left a region but has detected a new beacon. Since virtual beacons may not be placed in close proximity with any other beacon, this results in an implied check-out with an additional flag "context.impliedCheckout=true" appearing in its deviceevent record.
 
 ## <a name="installation"></a>Installation
 
