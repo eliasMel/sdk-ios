@@ -38,7 +38,7 @@ During the course of operation of your application, you can send additional data
 
 One of the primary purposes of the SDK, however, is to allow a mobile application to listen for tag changes. As each beacon can have one or more tags associated with it, by acting upon the appearance or disappearance of a tag, you can easily handle approaching and leaving a beacon's region. In this respect, real beacons and virtual beacons (geo-fences) operate nearly identically (more on the differences in Key Concepts). The beacons' associated tags and positional information can be updated on the central platform without a need to update the SDK version nor the physical beacons that have been deployed.
 
-(On the iOS SDK) At any stage of the application lifecycle you can turn on and off the SDK. Turning off the SDK will stop monitoring beacons, broadcasting check-ins/check-outs, notifying of tag changes. updating metadata.
+At any stage of the application lifecycle you can turn on and off the SDK. Turning off the SDK will stop monitoring beacons, broadcasting check-ins/check-outs, notifying of tag changes. updating metadata.
 
 ## <a name="key-concepts"></a>Key Concepts
 
@@ -68,7 +68,7 @@ Virtual beacons work in concert with Beacon Devices - In order to work properly,
 * Virtual beacons will stay resident in a user's device until arriving at a new Location (or a reboot)
 
 ### <a name="mobile-api-key"></a>Mobile API Key
-  
+
 In order to use the SDK, you will need to generate a Mobile API key.
 
 To generate one, simply:
@@ -108,7 +108,7 @@ Note that it is possible to have a check-in without a check-out time - network i
 ## <a name="installation"></a>Installation
 
 
-1. Add LXProxSeeSDK.framework into your project. 
+1. Add LXProxSeeSDK.framework into your project.
 
 2. Open your project settings and go to the "Build Phases" tab. In the "Link library with binaries" section click the "+" button and add the following frameworks that are required by ProxSee SDK:
     * CoreLocation.framework
@@ -161,20 +161,20 @@ and implement the following method to receive notifications:
 - (void) didChangeTagsSet:(LXProxSeeNotificationObject *)proximityNotificationObject {
 	//execute your code
 }
-  
+
 ```
 
 
-You also need to make sure to remove the observer before your object is deallocated or your app will crash: 
+You also need to make sure to remove the observer before your object is deallocated or your app will crash:
 
 ```
 [self removeProxSeeNotificationObserver];
-  
+
 ```
 
 ### <a name="turning-on-off-monitoring"></a>Turning On/Off Monitoring
 
-At any point of the application lifecycle you can turn on or off the sdk which will stop monitoring beacons, stop broadcasting check-ins/check-outs, notifying of tag changes and updating metadata. 
+At any point of the application lifecycle you can turn on or off the sdk which will stop monitoring beacons, stop broadcasting check-ins/check-outs, notifying of tag changes and updating metadata.
 
 To turn off monitoring:
 
@@ -183,7 +183,7 @@ To turn off monitoring:
 ```
 
 To turn on monitoring:
-  
+
 ```
 [LXProxSeeSDKManager sharedInstance].isMonitoringEnabled = YES;   
 ```
@@ -203,6 +203,5 @@ Example:
             NSLog(@"Successfully updated metadata");
         }
     }];
-  
-```
 
+```
