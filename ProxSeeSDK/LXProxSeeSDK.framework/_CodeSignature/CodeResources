@@ -14,7 +14,7 @@
 		</data>
 		<key>Headers/LXProxSeeSDK.h</key>
 		<data>
-		5LUts3J2U2x1PxAEogZEm2oqDPk=
+		DkxsU99hP9vpROaUx5mLrdL+h0w=
 		</data>
 		<key>Headers/LXProxSeeSDKManager.h</key>
 		<data>
@@ -26,11 +26,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Dy4pmtUbO/bw3uj8dDD8O6bX8ng=
+		4QlcxBnEu8yHEbwYa/frQTL+cbI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		bKdo0GQb4ukZT5swR2BFb+SeFyQ=
+		</data>
+		<key>embedded.mobileprovision</key>
+		<data>
+		wmTsMnIHbiDTjBDvvr4GyUwPEfY=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -45,7 +49,7 @@
 		</data>
 		<key>Headers/LXProxSeeSDK.h</key>
 		<data>
-		5LUts3J2U2x1PxAEogZEm2oqDPk=
+		DkxsU99hP9vpROaUx5mLrdL+h0w=
 		</data>
 		<key>Headers/LXProxSeeSDKManager.h</key>
 		<data>
@@ -58,6 +62,10 @@
 		<key>Modules/module.modulemap</key>
 		<data>
 		bKdo0GQb4ukZT5swR2BFb+SeFyQ=
+		</data>
+		<key>embedded.mobileprovision</key>
+		<data>
+		wmTsMnIHbiDTjBDvvr4GyUwPEfY=
 		</data>
 	</dict>
 	<key>rules</key>

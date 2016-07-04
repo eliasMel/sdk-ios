@@ -11,21 +11,21 @@ Furthermore, the ProxSee SDK will automatically communicate a check-in/check-out
 
 * [How Does the ProxSee SDK Work?](#how-does-proxsee-sdk-works)
 * [Key Concepts](#key-concepts)
-    * [Beacon Device](#beacon-device)
-    * [Virtual Beacon](#virtual-beacon)
-        * [Recommendations](#recommendations)
-        * [Limits](#limits)
-    * [Mobile API Key](#mobile-api-key)
-    * [Locations](#locations) 	
-    * [Tags](#tags) 	
-    * [Metadata](#metadata)
-    * [Check-in/Check-out](#check-in-check-out)
+* [Beacon Device](#beacon-device)
+* [Virtual Beacon](#virtual-beacon)
+* [Recommendations](#recommendations)
+* [Limits](#limits)
+* [Mobile API Key](#mobile-api-key)
+* [Locations](#locations) 	
+* [Tags](#tags) 	
+* [Metadata](#metadata)
+* [Check-in/Check-out](#check-in-check-out)
 * [Installation](#installation)
 * [Usage](#usage)
-    * [Launching the SDK](#launching-the-sdk)
-    * [Receiving Tag Changeset Notifications](#receive-tags-changeset-notifications)
-    * [Turning On/Off Monitoring](#turning-on-off-monitoring)
-    * [Updating Metadata](#updating-metadata)
+* [Launching the SDK](#ios-launching-the-sdk)
+* [Receiving Tag Changeset Notifications](#ios-receive-tags-changeset-notifications)
+* [Turning On/Off Monitoring](#ios-turning-on-off-monitoring)
+* [Updating Metadata](#ios-updating-metadata)
 
 
 ## <a name="how-does-proxsee-sdk-works"></a>How Does the ProxSee SDK Work?
@@ -111,17 +111,17 @@ One special type of check-out is the implied check-out for a virtual beacon. Thi
 1. Add LXProxSeeSDK.framework into your project.
 
 2. Open your project settings and go to the "Build Phases" tab. In the "Link library with binaries" section click the "+" button and add the following frameworks that are required by ProxSee SDK:
-    * CoreLocation.framework
+* CoreLocation.framework
 3. Go to "Build Settings", find "Other Linker Flags" and add `-ObjC`.
 
 4. Since iOS 8 and above, ProxSee SDK require NSLocationAlwaysUsageDescription to be enabled for it to work.  You are required to enable location prompt message through your project Info.plist.
 
-   Make sure you add the following key-value to your plist
+Make sure you add the following key-value to your plist
 
-   ```
-   <key>NSLocationAlwaysUsageDescription</key>
-   <string>Your location prompt message</string>
-   ```
+```
+<key>NSLocationAlwaysUsageDescription</key>
+<string>Your location prompt message</string>
+```
 
 5. At this point, the SDK is ready to use and your project can compile successfully. You will still need to obtain an API key to use the SDK.
 
@@ -129,7 +129,7 @@ ProxSee SDK is also available via [CocoaPods.org](https://libraries.io/cocoapods
 
 ## <a name="usage"></a>Usage
 
-### <a name="launching-the-sdk"></a>Launching the SDK
+### <a name="ios-launching-the-sdk"></a>Launching the SDK
 
 
 Obtain a Mobile API key (see [Mobile API Key](#mobile-api-key)). Then, on the application didFinishLaunchingWithOptions, initialize the ProxSee SDK with the Mobile API key (replace "YourApiKey" with your Mobile API GUID)
@@ -138,12 +138,12 @@ Obtain a Mobile API key (see [Mobile API Key](#mobile-api-key)). Then, on the ap
 #import <LXProxSeeSDK/LXProxSeeSDK.h>
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [LXProxSeeSDKManager launchProxSeeWithApiKey:@"YourApiKey"];
-    return YES;
+[LXProxSeeSDKManager launchProxSeeWithApiKey:@"YourApiKey"];
+return YES;
 }
 ```
 
-### <a name="receive-tags-changeset-notifications"></a>Receiving Tag Changeset Notifications
+### <a name="ios-receive-tags-changeset-notifications"></a>Receiving Tag Changeset Notifications
 
 Any object can receive tag changeset notification. Notifications are only sent when tags are changed. The SDK will send you an LXProxSeeNotificationObject which includes the new and previous tags' changeset along with the date captured for each changeset.
 
@@ -159,7 +159,7 @@ and implement the following method to receive notifications:
 
 ```
 - (void) didChangeTagsSet:(LXProxSeeNotificationObject *)proximityNotificationObject {
-	//execute your code
+//execute your code
 }
 
 ```
@@ -172,7 +172,7 @@ You also need to make sure to remove the observer before your object is dealloca
 
 ```
 
-### <a name="turning-on-off-monitoring"></a>Turning On/Off Monitoring
+### <a name="ios-turning-on-off-monitoring"></a>Turning On/Off Monitoring
 
 At any point of the application lifecycle you can turn on or off the sdk which will stop monitoring beacons, stop broadcasting check-ins/check-outs, notifying of tag changes and updating metadata.
 
@@ -188,20 +188,20 @@ To turn on monitoring:
 [LXProxSeeSDKManager sharedInstance].isMonitoringEnabled = YES;   
 ```
 
-### <a name="updating-metadata"></a>Updating Metadata
+### <a name="ios-updating-metadata"></a>Updating Metadata
 
 Example:
 
 ```
 [[LXProxSeeSDKManager sharedInstance] updateMetadata:@{ @"key" : @"value" } completionHandler:^(BOOL success, NSError *error) {
-        if (!success)
-        {
-            NSLog(@"Failed to update metadata %@",error);
-        }
-        else
-        {
-            NSLog(@"Successfully updated metadata");
-        }
-    }];
+if (!success)
+{
+NSLog(@"Failed to update metadata %@",error);
+}
+else
+{
+NSLog(@"Successfully updated metadata");
+}
+}];
 
 ```

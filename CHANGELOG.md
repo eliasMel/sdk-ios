@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [2.4.0] - NOT YET RELEASED
 
+## [2.3.2] - 2016-04-02
+### Changed
+- Stop sending bluetooth, location and sdk enabled metadata.
+
 ## [2.3.1] - 2016-04-02
 ### Fixed
 - Remove bluetooth popup alert message.
