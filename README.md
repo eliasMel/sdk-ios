@@ -116,12 +116,12 @@ One special type of check-out is the implied check-out for a virtual beacon. Thi
 
 4. Since iOS 8 and above, ProxSee SDK require NSLocationAlwaysUsageDescription to be enabled for it to work.  You are required to enable location prompt message through your project Info.plist.
 
-Make sure you add the following key-value to your plist
+	Make sure you add the following key-value to your plist
 
-```
-<key>NSLocationAlwaysUsageDescription</key>
-<string>Your location prompt message</string>
-```
+	```
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Your location prompt message</string>
+	```
 
 5. At this point, the SDK is ready to use and your project can compile successfully. You will still need to obtain an API key to use the SDK.
 
