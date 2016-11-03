@@ -11,21 +11,21 @@ Furthermore, the ProxSee SDK will automatically communicate a check-in/check-out
 
 * [How Does the ProxSee SDK Work?](#how-does-proxsee-sdk-works)
 * [Key Concepts](#key-concepts)
-	* [Beacon Device](#beacon-device)
-	* [Virtual Beacon](#virtual-beacon)
-		* [Recommendations](#recommendations)
-		* [Limits](#limits)
-	* [Mobile API Key](#mobile-api-key)
-	* [Locations](#locations) 	
-	* [Tags](#tags) 	
-	* [Metadata](#metadata)
-	* [Check-in/Check-out](#check-in-check-out)
+* [Beacon Device](#beacon-device)
+* [Virtual Beacon](#virtual-beacon)
+* [Recommendations](#recommendations)
+* [Limits](#limits)
+* [Mobile API Key](#mobile-api-key)
+* [Locations](#locations) 	
+* [Tags](#tags) 	
+* [Metadata](#metadata)
+* [Check-in/Check-out](#check-in-check-out)
 * [Installation](#installation)
 * [Usage](#usage)
-	* [Launching the SDK](#ios-launching-the-sdk)
-	* [Receiving Tag Changeset Notifications](#ios-receive-tags-changeset-notifications)
-	* [Turning On/Off Monitoring](#ios-turning-on-off-monitoring)
-	* [Updating Metadata](#ios-updating-metadata)
+* [Launching the SDK](#ios-launching-the-sdk)
+* [Receiving Tag Changeset Notifications](#ios-receive-tags-changeset-notifications)
+* [Turning On/Off Monitoring](#ios-turning-on-off-monitoring)
+* [Updating Metadata](#ios-updating-metadata)
 
 
 ## <a name="how-does-proxsee-sdk-works"></a>How Does the ProxSee SDK Work?
@@ -116,12 +116,12 @@ One special type of check-out is the implied check-out for a virtual beacon. Thi
 
 4. Since iOS 8 and above, ProxSee SDK require NSLocationAlwaysUsageDescription to be enabled for it to work.  You are required to enable location prompt message through your project Info.plist.
 
-	Make sure you add the following key-value to your plist
+Make sure you add the following key-value to your plist
 
-	```
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Your location prompt message</string>
-	```
+```
+<key>NSLocationAlwaysUsageDescription</key>
+<string>Your location prompt message</string>
+```
 
 5. At this point, the SDK is ready to use and your project can compile successfully. You will still need to obtain an API key to use the SDK.
 
