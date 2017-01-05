@@ -11,21 +11,21 @@ Furthermore, the ProxSee SDK will automatically communicate a check-in/check-out
 
 * [How Does the ProxSee SDK Work?](#how-does-proxsee-sdk-works)
 * [Key Concepts](#key-concepts)
-* [Beacon Device](#beacon-device)
-* [Virtual Beacon](#virtual-beacon)
-* [Recommendations](#recommendations)
-* [Limits](#limits)
-* [Mobile API Key](#mobile-api-key)
-* [Locations](#locations) 	
-* [Tags](#tags) 	
-* [Metadata](#metadata)
-* [Check-in/Check-out](#check-in-check-out)
+	* [Beacon Device](#beacon-device)
+	* [Virtual Beacon](#virtual-beacon)
+		* [Recommendations](#recommendations)
+		* [Limits](#limits)
+	* [Mobile API Key](#mobile-api-key)
+	* [Locations](#locations) 	
+	* [Tags](#tags) 	
+	* [Metadata](#metadata)
+	* [Check-in/Check-out](#check-in-check-out)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Launching the SDK](#ios-launching-the-sdk)
-* [Receiving Tag Changeset Notifications](#ios-receive-tags-changeset-notifications)
-* [Turning On/Off Monitoring](#ios-turning-on-off-monitoring)
-* [Updating Metadata](#ios-updating-metadata)
+	* [Launching the SDK](#ios-launching-the-sdk)
+	* [Receiving Tag Changeset Notifications](#ios-receive-tags-changeset-notifications)
+	* [Turning On/Off Monitoring](#ios-turning-on-off-monitoring)
+	* [Updating Metadata](#ios-updating-metadata)
 
 
 ## <a name="how-does-proxsee-sdk-works"></a>How Does the ProxSee SDK Work?
@@ -48,12 +48,7 @@ Also referred to as a "real beacon", a "beacon" or an "iBeacon™", this is the 
 
 ### <a name="virtual-beacon"></a>Virtual Beacon
 
-A virtual beacon is a geo-fence - it acts like a broad-ranging real beacon but is based on the user crossing a circular boundary on a map as opposed to nearing a real beacon - as such, it can serve as a less accurate beacon in locations the customer may not have access/permission to add a real beacon device. You are limited to 5 virtual beacons being defined per general Location.
-
-Virtual beacons work in concert with Beacon Devices - In order to work properly, the virtual beacons should be placed on the map in such a way as the user would hit a real beacon before hitting the virtual one. Example:
-
-* Bad: Putting a virtual beacon in the parking lot of a mall and a beacon device inside the mall - would not be able to detect people approaching from the parking lot (the SDK would first begin to notify upon hitting the beacon device in the mall, not in the parking lot)
-* Good: Putting a virtual beacon on Rent A Car Rd in Las Vegas and a beacon device inside the arrival area would be able to detect people coming off of the plane and then detect those that went off to the rental area
+A virtual beacon is a geo-fence - it acts like a broad-ranging real beacon but is based on the user crossing a circular boundary on a map as opposed to nearing a real beacon - as such, it can serve as a less accurate beacon in locations the customer may not have access/permission to add a real beacon device.
 
 ##### <a name="recommendations"></a>Recommendations
 * Select a medium or greater range for your virtual beacon for best results
@@ -62,10 +57,8 @@ Virtual beacons work in concert with Beacon Devices - In order to work properly,
 * Note that check-ins in a virtual beacon are far more likely to occur than check-outs
 
 ##### <a name="limits"></a>Limits
-* The outer radius of a virtual beacon must be more than 200m in distance from the outer radius of any other beacon (real or virtual) - this is enforced by the main platform
 * The accuracy of the virtual beacon may drop significantly in an indoor region
 * The virtual beacon sensitivity is limited to the given device's geo-location abilities and the surrounding environment - results may vary. If greater accuracy is required, real beacon devices are recommended
-* Virtual beacons will stay resident in a user's device until arriving at a new Location (or a reboot)
 
 ### <a name="mobile-api-key"></a>Mobile API Key
 
@@ -103,8 +96,6 @@ A checkin-in/check-out forms a tuple for a device event and track beacon region 
 
 Note that it is possible to have a check-in without a check-out time - network interruptions, etc. could cause a missed check-out.
 
-One special type of check-out is the implied check-out for a virtual beacon. This happens when the user's device does not properly detect that it has left a region but has detected a new beacon. Since virtual beacons may not be placed in close proximity with any other beacon, this results in an implied check-out with an additional flag "context.impliedCheckout=true" appearing in its deviceevent record.
-
 ## <a name="installation"></a>Installation
 
 
@@ -116,12 +107,12 @@ One special type of check-out is the implied check-out for a virtual beacon. Thi
 
 4. Since iOS 8 and above, ProxSee SDK require NSLocationAlwaysUsageDescription to be enabled for it to work.  You are required to enable location prompt message through your project Info.plist.
 
-Make sure you add the following key-value to your plist
+	Make sure you add the following key-value to your plist
 
-```
-<key>NSLocationAlwaysUsageDescription</key>
-<string>Your location prompt message</string>
-```
+	```
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Your location prompt message</string>
+	```
 
 5. At this point, the SDK is ready to use and your project can compile successfully. You will still need to obtain an API key to use the SDK.
 

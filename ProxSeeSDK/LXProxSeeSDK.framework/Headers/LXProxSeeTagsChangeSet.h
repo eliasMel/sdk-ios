@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+
+
 /*
  *  LXProxSeeTagsChangeSet
  *
  *  Discussion:
- *    LXProxSeeTagsChangeSet object which has a set of tags and their capture date.
+ *    LXProxSeeTagsChangeSet object which has a set of tags, set of beacondetail their capture date.
  */
 
 @protocol LXProxSeeTagsChangeSet <NSObject>
@@ -26,6 +28,7 @@
 
 @property (nonatomic, strong, readonly) NSSet *tags;
 
+
 /*
  *  lastSeen
  *
@@ -35,3 +38,5 @@
 @property (nonatomic, strong, readonly) NSDate *lastSeen;
 
 @end
+
+
