@@ -2,9 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.4.1] - 2017-01-18
+### Fixed
+- fixing duplicate metadata requests.
+
 
 ## [2.4.0] - 2017-01-06
-## Changed
+### Changed
 - Refactor virtual regions detection logic, remove region limitations and implicit checkouts.
 - Allow intersected regions and reduce the region minimum limit
 - Enhance beacon detection and reduce false handshakes
