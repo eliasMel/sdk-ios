@@ -44,7 +44,7 @@ At any stage of the application lifecycle you can turn on and off the SDK. Turni
 
 ## <a name="minimum-requirments"></a>Minimum requirements
 * iOS 7+
-* Devices with BLE support 
+* Devices with Bluetooth Low Energy
 
 ## <a name="key-concepts"></a>Key Concepts
 
