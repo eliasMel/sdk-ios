@@ -7,6 +7,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - properly populate requests errors.
 
+## [2.4.1] - 2017-01-18
+### Fixed
+- fixing duplicate metadata requests.
 
 ## [2.4.0] - 2017-01-06
 ### Changed
