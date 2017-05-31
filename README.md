@@ -125,6 +125,9 @@ ProxSee SDK is also available via [CocoaPods.org](https://libraries.io/cocoapods
 
 Obtain a Mobile API key (see [Mobile API Key](#mobile-api-key)). Then, on the application didFinishLaunchingWithOptions, initialize the ProxSee SDK with the Mobile API key (replace "YourApiKey" with your Mobile API GUID)
 
+On first time app installation and upon calling launchProxSeeWithApiKey, the sdk will be in starting state by default and therefore will be started automatically.
+After that, on any app restart followed by a call for launchProxSeeWithApiKey will attempt to start depending on the SDK State. Calling sdk launchProxSeeWithApiKey more then once has no effect.
+
 ```
 #import <LXProxSeeSDK/LXProxSeeSDK.h>
 
@@ -166,6 +169,8 @@ You also need to make sure to remove the observer before your object is dealloca
 ### <a name="ios-turning-on-off-monitoring"></a>Turning On/Off Monitoring
 
 At any point of the application lifecycle you can turn on or off the sdk which will stop monitoring beacons, stop broadcasting check-ins/check-outs, notifying of tag changes and updating metadata.
+
+Any explicit change for isMonitoringEnabled, will change the SDK state accordingly. This will be used later on app restart when launchProxSeeWithApiKey method called to determine the state.
 
 To turn off monitoring:
 
