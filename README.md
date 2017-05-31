@@ -126,7 +126,7 @@ ProxSee SDK is also available via [CocoaPods.org](https://libraries.io/cocoapods
 Obtain a Mobile API key (see [Mobile API Key](#mobile-api-key)). Then, on the application didFinishLaunchingWithOptions, initialize the ProxSee SDK with the Mobile API key (replace "YourApiKey" with your Mobile API GUID)
 
 On first time app installation and upon calling launchProxSeeWithApiKey, the sdk will be in turned on mode by default and therefore will be started automatically.
-After that, on any app restart followed by a call for launchProxSeeWithApiKey will attempt to start depending on the SDK mode. Calling sdk launchProxSeeWithApiKey more then once has no effect.
+After that, on any app restart followed by a call for launchProxSeeWithApiKey will attempt to start depending on the SDK mode. Calling sdk launchProxSeeWithApiKey more than once has no effect.
 
 ```
 #import <LXProxSeeSDK/LXProxSeeSDK.h>
