@@ -1,67 +1,68 @@
-# iOS SDK Change Log
+# ProxSee SDK for iOS Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [2.4.3] - 2017-05-16
 ### Fixed
-- properly populate requests errors.
+- Request errors now properly populated
 
 ## [2.4.1] - 2017-01-18
 ### Fixed
-- fixing duplicate metadata requests.
+- Duplicate metadata requests now fixed
 
 ## [2.4.0] - 2017-01-06
 ### Changed
-- Refactor virtual regions detection logic, remove region limitations and implicit checkouts.
-- Allow intersected regions and reduce the region minimum limit
-- Enhance beacon detection and reduce false handshakes
-- Allow more offline support and reduce number of requests.
+- Refactored virtual regions detection logic
+- Rregion limitations and implicit checkouts removed
+- Intersected regions allowed and reduction in the region minimum limit
+- Enhanced beacon detection
+- Reduction in false handshakes
+- Additional offline support and reduction in the number of requests
 
 
 ## [2.3.2] - 2016-04-02
 ### Changed
-- Stop sending bluetooth, location and sdk enabled metadata.
+- Bluetooth, location, and SDK-enabled metadata no longer sent
 
 ## [2.3.1] - 2016-04-02
 ### Fixed
-- Remove bluetooth popup alert message.
-- Make sure we dont send bluetooth disabled/enabled signals to the server on restart.
+- Bluetooth popup alert message removed
+- Bluetooth disabled/enabled signals no longer sent to the server on restart
 
 ## [2.3.0] - 2016-03-10
 ### Added
-- Offline support for checkin/out. The SDK will now save any checkin/out in offline mode, so it can resubmit later when its back online.
-- Sending beacon rssi information with checkin requests.
+- Offline support for check-ins/check-outs (The SDK will now save any check-in/check-out in offline mode so it can resubmit later when back online)
+- Beacon RSSI information now sent with check-in requests
 
 ## [2.2.1] - 2016-03-10
 ### Fixed
-- Remove bluetooth popup alert message
+- Bluetooth pop-up alert message removed
 
 ## [2.2.0] - 2015-11-26
 ### Added
-- Ability to start / stop the SDK
-- Capturing device information through metadata such as location, bluetooth and starting/stopping of the sdk
+- Ability to start/stop the SDK
+- Capture of device information through metadata such as location, Bluetooth and starting/stopping of the SDK
 
 ### Changed
 - Updated documentation 
-- You are no longer allowed to send metadata while the sdk is turned off.
+- Metadata no longer allowed to be sent while the SDK is turned off
 
 ### Fixed
-- Fixing bugs related when stop/start monitoring concurently. 
+- Bug fixes related to stopping/starting monitoring concurently 
 
 ## [2.1.0] - 2015-09-16
 ### Added
-- Virtual Beacon support
-    - Read more about virtual beacons [here](../features/virtualbeacons.md) - iOS-specific features follow.
-    - Virtual beacon entry and exit notifications will use native geo-fencing capabilities of the iOS - this means that "the user’s location must cross the region boundary, move away from the boundary by a minimum distance, and remain at that minimum distance for at least 20 seconds before the notifications are reported" (in practice, other factors such as the speed of the user may shorten the minimums)
+- Virtual Beacon Support
+    - Virtual beacon entry and exit notifications now use the native geo-fencing capabilities of the iOS. This means that "the user’s location must cross the region boundary, move away from the boundary by a minimum distance, and remain at that minimum distance for at least 20 seconds before the notifications are reported" (in practice, other factors such as the speed of the user may shorten the minimums).
 - CocoaPod support [PROXSEE-121]
-    - SDK is now published as a CocoaPod at https://github.com/proxsee/sdk-ios as "ProxSeeSDK" 
+    - The SDK is now published as a CocoaPod at [https://github.com/proxsee/sdk-ios](#https://github.com/proxsee/sdk-ios) as "ProxSeeSDK" 
 
 ### Changed
 - Updated documentation [333]
 - Various optimizations including:
-    - Minimizing number of threads used
+    - Minimization in the number of threads used
     - Code refactoring
 
 ### Fixed
-- Reference new URL for querying nearby beacons [167]
+- New URL referenced for querying nearby beacons [167]
