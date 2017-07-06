@@ -14,7 +14,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [2.4.0] - 2017-01-06
 ### Changed
 - Refactored virtual regions detection logic
-- Rregion limitations and implicit checkouts removed
+- Region limitations and implicit checkouts removed
 - Intersected regions allowed and reduction in the region minimum limit
 - Enhanced beacon detection
 - Reduction in false handshakes
