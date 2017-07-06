@@ -11,6 +11,7 @@ The content in this document is divided into the following sections:
         - [Beacon](#beacon) 
         - [Virtual Beacon](#virtual-beacon)
             - [Deployment](#deployment)
+            - [Limitations](#limitations)
             - [Accuracy](#accuracy)
         - [Mobile API Key](#mobile-api-key)
         - [Locations](#locations)
@@ -53,9 +54,9 @@ Along with monitoring the beacons/virtual beacons, the ProxSee SDK also queries 
 
 The ProxSee SDK allows your application to:
 
-- **Listen For and Receive Tag Changeset Notifications**: Your application can listen for and receive tag changeset notifications sent by the ProxSee SDK. You can update the tags and positional information associated to a beacon/virtual beacon through the ProxSee Admin Portal without having to update your ProxSee SDK or the physical, deployed beacons.
-- **Turn Monitoring On/Off**: The ProxSee SDK monitors beacons/virtual beacons, broadcasts check-ins/check-outs, send tag changeset notifications, and update metadata. At any point in your application, you can turn on or off the ProxSee SDK, which turns on or off monitoring. 
-- **Send Metadata**: You can send additional information about a user such as account information and user IDs to the ProxSee SDK. When the ProxSee SDK receives metadata it associates it with the user's check-ins, which helps you identify users and devices among the collected data. 
+- **Listen For and Receive Tag Changeset Notifications**: Your application can listen for and receive tag changeset notifications sent by the ProxSee SDK. You can update the tags and positional information associated to a beacon/virtual beacon through the ProxSee Admin Portal without having to update your ProxSee SDK or the physical, deployed beacons. See [Handle Tag Changeset Notifications](#handle-tag-changeset-notifications).
+- **Enable/Disable the ProxSee SDK**: The ProxSee SDK monitors beacons/virtual beacons, broadcasts check-ins/check-outs, send tag changeset notifications, and update metadata. At any point in your application, you can enable/disable the ProxSee SDK, which in turn enables/disables monitoring. See [Enable/Disable the ProxSee SDK](#enable-disable-the-proxsee-sdk). 
+- **Update Metadata**: You can send additional information about a user such as account information and user IDs to the ProxSee SDK. When the ProxSee SDK receives metadata it associates it with the user's check-ins, which helps you identify users and devices among the collected data. See [Update Metadata](#update-metadata). 
 
 ### Key Concepts
 
