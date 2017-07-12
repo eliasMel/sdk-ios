@@ -167,38 +167,30 @@ In order to use the ProxSee SDK, you will need to generate a Mobile API Key.
 
 ### Add the ProxSee SDK to Your iOS Project
 
-Once you have generated a Mobile API Key you can begin the process to add the ProxSee SDK to your iOS Project. 
+Once you have generated a Mobile API Key you can begin the process to add the ProxSee SDK to your iOS project.
 
-You can get the ProxSee SDK on CocoaPods at [https://cocoapods.org/pods/ProxSeeSDK](#https://cocoapods.org/pods/ProxSeeSDK)
+**Note**: The ProxSee SDK is available on CocoaPods at [https://cocoapods.org/pods/ProxSeeSDK](#https://cocoapods.org/pods/ProxSeeSDK).
 
-In order to add the ProxSee SDK to your iOS project, you must first install CocoaPods.
+1. Add the **LXProxSeeSDK.framework** file to your project.
+2. Open your project settings and click the **Build Phases** tab.
+3. In the **Link Binary with Libraries** section, click the **+** button and add the **CoreLocation.framework**.
+4. Click the **Build Settings** tab.
+5. In the **Other Linker Flags** section, add **-ObjC**.
+6. Add the following keys/values to your **Info.plist** file. These keys/values represent the text shown to users when they are prompted to allow location access. As of iOS 8, the ProxSee SDK requires these Location Services keys/values to be enabled in order to work properly.
 
-```
-$ gem install cocoapods
+    | Key | Type | Value |
+    |:-----------|------------:|:------------:|
+    | NSLocationAlwaysUsageDescription     |        String |     _Your location prompt message_     |
+    | NSLocationWhenInUseUsageDescription    |      String |    _Your location prompt message_   |
 
-```
-In your iOS project, create a file named **Podfile**.
 
-In your Podfile, add the ProxSee SDK as a dependency.
-
-```
-pod 'ProxSeeSDK'
-```
-
-Run the install command.
-
-```
-$ pod install
-
-```
-At this point, the ProxSee SDK is ready to use and your project can compile successfully. 
 
 ### Launch the ProxSee SDK
 
 Once you have added the ProxSee SDK as a dependency in your iOS project, you can initialize the ProxSee SDK using the Mobile API Key you generated in a previous step. 
 
 On the initial launch, the ProxSee SDK will be ON by default and will start automatically. 
-After the initial launch, on any app restart followed by a call for launchProxSeeWithApiKey, an attempt will be made to start the ProxSee SDK dependinging on the SDK mode. Calling launchProxSeeWithApiKey more than once has no effect.
+After the initial launch, on any app restart followed by a call for launchProxSeeWithApiKey, an attempt will be made to start the ProxSee SDK depending on the SDK mode. Calling launchProxSeeWithApiKey more than once has no effect.
 
 **Note**: In the following code, replace “YourApiKey” with the Mobile API Key you generated in a previous step.
 
