@@ -15,10 +15,10 @@ FOUNDATION_EXPORT NSString * const LXProxSeeSDKBuildString;
 
 
 //  Version: 2.4.3
-//  Build String : -B8_master.2abd8bd0a79
+//  Build String : -B9_master.d81d831e161
 //
 //  Built by: teamcity
-//        at: Mon 10 Jul 2017 04:21:25 PDT
+//        at: Thu 13 Jul 2017 06:09:54 PDT
 
 // In this header, you should import all the public headers of your framework using statements like #import <LXProximitySDK/PublicHeader.h>
 
