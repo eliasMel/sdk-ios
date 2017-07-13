@@ -13,12 +13,11 @@ The content in this document is divided into the following sections:
             - [Deployment](#deployment)
             - [Limitations](#limitations)
             - [Accuracy](#accuracy)
-        - [Mobile API Key](#mobile-api-key)
         - [Locations](#locations)
         - [Tags](#tags)
         - [Metadata](#metadata)
-        - [Check-In/Check-Out](#check-in-check-out)
-- [Section 2: Implementing the ProxSee SDK in an iOS Project](#section-2-implementing-the-proxsee-in-an-ios-project)
+        - [Check-In/Check-Out](#check-in%2Fcheck-out)
+- [Section 2: Implementing the ProxSee SDK in an iOS Project](#section-2-implementing-the-proxsee-sdk-in-an-ios-project)
     - [Prerequisites](#prerequisites)
     - [Generate a Mobile API Key](#generate-a-mobile-api-key)
     - [Add the ProxSee SDK to Your iOS Project](#add-the-proxsee-sdk-to-your-ios-project)
@@ -28,11 +27,11 @@ The content in this document is divided into the following sections:
         - [Listen for Tag Changeset Notifications](#listen-for-tag-changeset-notifications)
         - [Receive Tag Changeset Notifications](#receive-tag-changeset-notifications)
         - [Remove the Observer](#remove-the-observer)
-    - [Enable/Disable the ProxSee SDK](#enable-disable-the-proxsee-sdk)
+    - [Enable/Disable the ProxSee SDK](#enable%2Fdisable-the-proxsee-sdk)
         - [Enable the ProxSee SDK](#enable-the-proxsee-sdk)
         - [Disable the ProxSee SDK](#disable-the-proxsee-sdk)
     - [Update Metadata](#update-metadata)
-- [Section 4: FAQs](#faqs)
+- [Section 4: FAQs](#section-4-faqs)
 
  
 ## Section 1: Introducing the ProxSee SDK
@@ -55,7 +54,7 @@ Along with monitoring the beacons/virtual beacons, the ProxSee SDK also queries 
 The ProxSee SDK allows your application to:
 
 - **Listen For and Receive Tag Changeset Notifications**: Your application can listen for and receive tag changeset notifications sent by the ProxSee SDK. You can update the tags and positional information associated to a beacon/virtual beacon through the ProxSee Admin Portal without having to update your ProxSee SDK or the physical, deployed beacons. See [Handle Tag Changeset Notifications](#handle-tag-changeset-notifications).
-- **Enable/Disable the ProxSee SDK**: The ProxSee SDK monitors beacons/virtual beacons, broadcasts check-ins/check-outs, send tag changeset notifications, and update metadata. At any point in your application, you can enable/disable the ProxSee SDK, which in turn enables/disables monitoring. See [Enable/Disable the ProxSee SDK](#enable-disable-the-proxsee-sdk). 
+- **Enable/Disable the ProxSee SDK**: The ProxSee SDK monitors beacons/virtual beacons, broadcasts check-ins/check-outs, send tag changeset notifications, and update metadata. At any point in your application, you can enable/disable the ProxSee SDK, which in turn enables/disables monitoring. See [Enable/Disable the ProxSee SDK](#enable%2Fdisable-the-proxsee-sdk). 
 - **Update Metadata**: You can send additional information about a user such as account information and user IDs to the ProxSee SDK. When the ProxSee SDK receives metadata it associates it with the user's check-ins, which helps you identify users and devices among the collected data. See [Update Metadata](#update-metadata). 
 
 ### Key Concepts
@@ -178,11 +177,9 @@ Once you have generated a Mobile API Key you can begin the process to add the Pr
 5. In the **Other Linker Flags** section, add **-ObjC**.
 6. Add the following keys/values to your **Info.plist** file. These keys/values represent the text shown to users when they are prompted to allow location access. As of iOS 8, the ProxSee SDK requires these Location Services keys/values to be enabled in order to work properly.
 
-    | Key | Type | Value |
-    |:-----------|------------:|:------------:|
-    | NSLocationAlwaysUsageDescription     |        String |     _Your location prompt message_     |
-    | NSLocationWhenInUseUsageDescription    |      String |    _Your location prompt message_   |
-
+| Key | Type | Value |
+|:-----------|------------:|:------------:|
+| NSLocationAlwaysUsageDescription       |        String |     _Your location prompt message_    |
 
 
 ### Launch the ProxSee SDK
@@ -209,7 +206,7 @@ return YES;
 The following actions can be performed within the ProxSee SDK:
 
 - [Handle Tag Changeset Notifications](#handle-tag-changeset-notifications)
-- [Enable/Disable the ProxSee SDK](#enable-disable-the-proxsee-sdk)
+- [Enable/Disable the ProxSee SDK](#enable%2Fdisable-the-proxsee-sdk)
 - [Update Metadata](#update-metadata)
 
 ### Handle Tag Changeset Notifications
