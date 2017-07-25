@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LXProxSeeBeacon.h"
 
 /*
  *  LXProxSeeSDKManager
@@ -61,6 +62,16 @@
 
 @property (nonatomic) BOOL isMonitoringEnabled;
 
+
+/*
+ *  fetchDetectedBeaconsWithCompletionHandler:;
+ *
+ *  Discussion:
+ *      fetch the detected Beacons and pass a set of LXProxSeeBeacon in completionHandler
+ *
+ */
+
+- (void) fetchDetectedBeaconsWithCompletionHandler:(void (^)(NSSet<LXProxSeeBeacon *> *beacons))completionHandler;
 
 @end
 
