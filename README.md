@@ -28,6 +28,7 @@ The content in this document is divided into the following sections:
         - [Enable the ProxSee SDK](#enable-the-proxsee-sdk)
         - [Disable the ProxSee SDK](#disable-the-proxsee-sdk)
     - [Update Metadata](#update-metadata)
+    - [Get Detected Beacons](#get-detected-beacons)
 - [Section 4: FAQs](#section-4-faqs)
 
  
@@ -53,6 +54,7 @@ The ProxSee SDK allows your application to:
 - **Listen For and Receive Tag Changeset Notifications**: Your application can listen for and receive tag changeset notifications sent by the ProxSee SDK. You can update the tags and positional information associated to a beacon/virtual beacon through the ProxSee Admin Portal without having to update your ProxSee SDK or the physical, deployed beacons. See [Handle Tag Changeset Notifications](#handle-tag-changeset-notifications).
 - **Enable/Disable the ProxSee SDK**: The ProxSee SDK monitors beacons/virtual beacons, broadcasts check-ins/check-outs, sends tag changeset notifications, and updates metadata. At any point in your application, you can turn on or off the ProxSee SDK, which turns on or off monitoring. See [Enable/Disable the ProxSee SDK](#enabledisable-the-proxsee-sdk).
 - **Update Metadata**: You can send additional information about a user such as account information and user IDs to the ProxSee SDK. When the ProxSee SDK receives metadata it associates it with the user's check-ins, which helps you identify users and devices among the collected data. See [Update Metadata](#update-metadata). 
+- **Get Detected Beacons**: Any time in the application lifecycle after initialization, you can get alld detected beacons. See [Get Detected Beacons](#get-detected-beacons).
 
 ### Key Concepts
 
@@ -142,15 +144,18 @@ Once you have generated a Mobile API Key you can begin the process to add the Pr
 
 **Note**: The ProxSee SDK is also available on CocoaPods at [https://cocoapods.org/pods/ProxSeeSDK](#https://cocoapods.org/pods/ProxSeeSDK)
 
-Add the **LXProxSeeSDK.framework** file to your project.
-Open your project settings and click the **Build Phases** tab. 
-In the **Link Binary With Libraries** section, click the **+** button and add the **CoreLocation.framework**.
-Click the **Build Settings** tab.
-In the **Other Linker Flags** section, add **-ObjC**. 
-Add the following key/value to your **Info.plist** file. This key/value represents the text shown to users when they are prompted to allow location access. As of iOS 8, the ProxSee SDK requires this Location key to be enabled in order to work properly.  
-	| Key  | Type  | Value  |
-	|---|---|---|
-	| NSLocationAlwaysUsageDescription  | String  | <Your location prompt message>  |
+1. Add the **LXProxSeeSDK.framework** file to your project.
+2. Open your project settings and click the **Build Phases** tab. 
+3. In the **Link Binary With Libraries** section, click the **+** button and add the **CoreLocation.framework**.
+4. Click the **Build Settings** tab.
+5. In the **Other Linker Flags** section, add **-ObjC**. 
+6. Add the following keys/values to your **Info.plist** file. These keys/values represent the text shown to users when they are prompted to allow location access.
+
+| Key  | Type    | Value   |  OS |
+|---|---|---|---|
+| NSLocationAlwaysUsageDescription  | String|  _Your location prompt message_ |  iOS 8 |
+| NSLocationAlwaysAndWhenInUseUsageDescription  | String | _Your location prompt message_  | iOS 11  |
+| NSLocationWhenInUseUsageDescription  | String  |  _Your location prompt message_ | iOS 11  |
 
 
 At this point, the ProxSee SDK is ready to use and your project can compile successfully.
@@ -180,6 +185,7 @@ The following actions can be performed within the ProxSee SDK:
 - [Handle Tag Changeset Notifications](#handle-tag-changeset-notifications)
 - [Enable/Disable the ProxSee SDK](#enabledisable-the-proxsee-sdk)
 - [Update Metadata](#update-metadata)
+- [Get Detected Beacons](#get-detected-beacons)
 
 ### Handle Tag Changeset Notifications
 
@@ -272,16 +278,28 @@ NSLog(@"Successfully updated metadata");
 
 ```
 
+### Get Detected Beacons
+
+Any time in the application lifecycle after initialization, you can execute the following code to get all detected beacons.
+
+```
+[[LXProxSeeSDKManager sharedInstance] fetchDetectedBeaconsWithCompletionHandler:^(NSSet *beacons) {
+       
+}];
+
+```
+
+
 ## Section 4: FAQs
 
-**Will the ProxSee SDK impact my mobile phone’s battery?** 
+**Will the ProxSee SDK impact my mobile device’s battery?** 
 
-Yes. The ProxSee SDK will draw approximately 1-2% of the mobile phone’s battery. 
+Yes. The ProxSee SDK will draw approximately 1-2% of the mobile device’s battery. 
 
-**How long does it take for the ProxSee SDK to detect a beacon?**
+**How long does it take the ProxSee SDK to detect a beacon?**
 
 - **Beacons**: 0 to a few seconds. 
-- **Virtual beacons**: The detection of virtual beacons is based on movement and location changes. The ProxSee SDK is expected to detect a virtual beacon whenever the mobile device is moved approximately 100 meters. 
+- **Virtual Beacons**: The detection of virtual beacons is based on movement and location changes. The ProxSee SDK is expected to detect a virtual beacon whenever the mobile device is moved approximately 100 meters. 
 
 **As a third-party developer using the ProxSee SDK, do I need to do anything if my application is rebooted?**
 
@@ -295,4 +313,15 @@ Scanning for physical beacons is paused while scanning for virtual beacons will 
 
 Scanning for both physical beacons and virtual beacons will be paused. Once Location is turned back on, scanning for both physical beacons and virtual beacons will resume. Note that the ProxSee SDK must have monitoring enabled in order to receive events.  
 
+**How long does it take the ProxSee SDK to confirm a check-out for a beacon?**
+
+- **Physical Beacons**: The time it takes the ProxSee SDK to confirm a check-out for a physical beacon depends on whether the application is in the background or the foreground.
+    - **Background**: A minimum of 20-25 seconds
+    - **Foreground**: 60-65 seconds
+- **Virtual Beacons**: As a general rule, the ProxSee SDK fetches the mobile device's location whenever the device is moved approximately 100 meters. Whenever the mobile device's location is updated, the ProxSee SDK checks to see if the updated location is within the boundary of a virtual beacon. If the location had previously been within the boundary of a virtual beacon but is no longer, a check-out is directly sent. Refer to the [Virtual Beacon](#virtual-beacon) section for more details. 
+
+**How long does it take to for beacons that have just been installed to reach the ProxSee SDK?**
+
+- **Physical Beacons**: Once a beacon is installed, if the ProxSee SDK is detected and the mobile device is not nearby, the ProxSee SDK should directly detect it. Note, in the case where you are installing a beacon next to you while installing the ProxSee SDK, a tag and/or check-in may be missed depending on wehther the the installation of the ProxSee SDK or the detection of the beacon finishes first. 
+- **Virtual Beacons**: Once a virtual beacon has been installed and you are not within its boundaries, any location event (e.g., moving the mobile device 100 meters) will update the data and allow the ProxSee SDK to detect it once the mobile device is within the boundary of the virtual beacon. Note, if you are installing the virtual beacon while within the boundary of the beacon while installing the ProxSee SDK, a tag and/or check-in may be missed depending on whether the installation of the ProxSee SDK or the detection of the virtual beacon finishes first. 
 
