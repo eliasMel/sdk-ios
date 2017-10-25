@@ -29,6 +29,7 @@ The content in this document is divided into the following sections:
         - [Disable the ProxSee SDK](#disable-the-proxsee-sdk)
     - [Update Metadata](#update-metadata)
     - [Get Detected Beacons](#get-detected-beacons)
+    - [Get Device ID](#get-device-id)
 - [Section 4: FAQs](#section-4-faqs)
 
  
@@ -289,6 +290,16 @@ Any time in the application lifecycle after initialization, you can execute the 
 
 ```
 
+### Get Device ID
+
+Any time in the application lifecycle after initialization, you can execute the following code to get device id that uniquely identify your app in proxsee system.
+
+```
+[[LXProxSeeSDKManager sharedInstance] fetchDeviceIdWithCompletionHandler:^(NSUUID *deviceId) {
+
+}];
+
+```
 
 ## Section 4: FAQs
 
@@ -324,4 +335,5 @@ Scanning for both physical beacons and virtual beacons will be paused. Once Loca
 
 - **Physical Beacons**: Once a beacon is installed, if the ProxSee SDK is detected and the mobile device is not nearby, the ProxSee SDK should directly detect it. Note, in the case where you are installing a beacon next to you while installing the ProxSee SDK, a tag and/or check-in may be missed depending on wehther the the installation of the ProxSee SDK or the detection of the beacon finishes first. 
 - **Virtual Beacons**: Once a virtual beacon has been installed and you are not within its boundaries, any location event (e.g., moving the mobile device 100 meters) will update the data and allow the ProxSee SDK to detect it once the mobile device is within the boundary of the virtual beacon. Note, if you are installing the virtual beacon while within the boundary of the beacon while installing the ProxSee SDK, a tag and/or check-in may be missed depending on whether the installation of the ProxSee SDK or the detection of the virtual beacon finishes first. 
+
 

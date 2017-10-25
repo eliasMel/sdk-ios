@@ -73,6 +73,17 @@
 
 - (void) fetchDetectedBeaconsWithCompletionHandler:(void (^)(NSSet<LXProxSeeBeacon *> *beacons))completionHandler;
 
+
+/*
+ *  fetchDeviceIdWithCompletionHandler:;
+ *
+ *  Discussion:
+ *      fetch proxsee device id and pass a set of LXProxSeeBeacon in completionHandler
+ *
+ */
+
+- (void) fetchDeviceIdWithCompletionHandler:(void (^)(NSUUID *deviceId))completionHandler;
+
 @end
 
 
