@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+
+## [3.0.0] - NOT RELEASED YET
+### Changed
+- Change main api interfaces. Please view [3.0.0 Migration Guide](Docs/migration_to_3.0.0.md)  
+- Support foreground authorisation 
+
 ## [2.5.1] - 2017-10-23
 
 ### Added
@@ -50,7 +56,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [2.2.0] - 2015-11-26
 ### Added
 - Ability to start/stop the SDK
-- Capture of device information through metadata such as location, Bluetooth and starting/stopping of the SDK
+- Capture of device information through metadata such as location, Bluetooth, and starting/stopping of the SDK
 
 ### Changed
 - Updated documentation 

@@ -1,0 +1,14 @@
+//
+//  shared.xcconfig
+//  LXProxSeeSDK
+//
+//  Created by Elie Melki on 4/11/17.
+//  Copyright © 2017 Lixar. All rights reserved.
+//
+
+#include "LXProxSeeSDKTest.xcconfig"
+
+DEVELOPMENT_TEAM = C5258MET3L;
+PROVISIONING_PROFILE = f8eda663-b646-4250-8b60-3b13cb66fc8e;
+PROVISIONING_PROFILE_SPECIFIER = Wildcard Enterprise Provisioning Profile;
+CODE_SIGN_IDENTITY = iPhone Distribution;

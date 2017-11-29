@@ -14,16 +14,20 @@ FOUNDATION_EXPORT NSString *LXProxSeeSDKVersion;
 FOUNDATION_EXPORT NSString * const LXProxSeeSDKBuildString;
 
 
-//  Version: 2.5.1
-//  Build String : -Build21-master.0abe6b04f23
+//  Version: 3.0.0
+//  Build String : -Build22-master.e7af92f394c
 //
 //  Built by: teamcity
-//        at: Wed 25 Oct 2017 04:29:20 PDT
+//        at: Wed 29 Nov 2017 01:58:15 PST
 
 // In this header, you should import all the public headers of your framework using statements like #import <LXProximitySDK/PublicHeader.h>
 
-#import "LXProxSeeNotificationsHandler.h"
-#import "LXProxSeeNotificationObject.h"
+#import "LXTags.h"
 #import "LXProxSeeSDKManager.h"
-#import "LXProxSeeTagsChangeSet.h"
+#import "LXTagsChangeSet.h"
 #import "LXProxSeeBeacon.h"
+#import "LXTagsManager.h"
+#import "LXBeaconManager.h"
+#import "LXMetadataManager.h"
+#import "LXDataManager.h"
+

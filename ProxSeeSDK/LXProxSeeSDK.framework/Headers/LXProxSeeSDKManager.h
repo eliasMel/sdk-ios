@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "LXProxSeeBeacon.h"
+#import "LXMetadataManager.h"
+#import "LXBeaconManager.h"
+#import "LXTagsManager.h"
+#import "LXDataManager.h"
 
 /*
  *  LXProxSeeSDKManager
@@ -29,60 +33,54 @@
 
 
 /*
- *  launchProxSeeWithApiKey:
+ *  initializeWithApiKey:
  *
  *  Discussion:
  *      This MUST be called on application: didFinishLaunchingWithOptions:.
  *      In order for SDK to work your need pass an API key which you obtain from the server.
  */
 
-+ (void) launchProxSeeWithApiKey:(NSString *)apiKey;
++ (void) initializeWithApiKey:(NSString *)apiKey;
+
+
+
+- (id<LXTagsManager>) tagsManager;
+
+- (id<LXBeaconManager>) beaconManager;
+
+- (id<LXDataManager>) dataManager;
+
+- (id<LXMetadataManager>) metadataManager;
 
 /*
- *  updateMetadata:
+ *  enable
  *
  *  Discussion:
- *      Metadata are used to add more descriptive information per device which can be used later for reporting.
- *      Updating metadata with the same data more than once will only make one Api call. 
- *      In other terms if you keep executing the above providing the same data it will hit the server once. 
- *      Only when you change the date it hit the server.
- *      No Metadata is send if proxsee is turned off.
+ *      enable ProxSee sdk
  */
 
-- (void) updateMetadata:(NSDictionary *)object completionHandler:(void (^)(BOOL success, NSError *error))completionHandler;
-
+- (void) enable;
 
 /*
- *  isProxSeeEnabled
+ *  disable
  *
  *  Discussion:
- *      Determines whether Proxsee is turned on or off.
- *      Turning on and off ProxSee SDK.
+ *      disable ProxSee sdk.
  */
 
-@property (nonatomic) BOOL isMonitoringEnabled;
-
+- (void) disable;
 
 /*
- *  fetchDetectedBeaconsWithCompletionHandler:;
+ *  isEnabled
  *
  *  Discussion:
- *      fetch the detected Beacons and pass a set of LXProxSeeBeacon in completionHandler
- *
+ *      Determines whether Proxsee is enabled  or disabled.
  */
 
-- (void) fetchDetectedBeaconsWithCompletionHandler:(void (^)(NSSet<LXProxSeeBeacon *> *beacons))completionHandler;
+@property (nonatomic, readonly) BOOL isEnabled;
 
 
-/*
- *  fetchDeviceIdWithCompletionHandler:;
- *
- *  Discussion:
- *      fetch proxsee device id and pass a set of LXProxSeeBeacon in completionHandler
- *
- */
 
-- (void) fetchDeviceIdWithCompletionHandler:(void (^)(NSUUID *deviceId))completionHandler;
 
 @end
 

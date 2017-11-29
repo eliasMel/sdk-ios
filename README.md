@@ -39,7 +39,7 @@ The content in this document is divided into the following sections:
 
 The ProxSee SDK takes the complexities out of beacon interaction and provides you with a simplified interface to quickly integrate iBeacon™ and virtual beacon (geo-fence) monitoring into your mobile application.
 
-Combined with the ProxSee Admin Portal, the ProxSee SDK allows you to create and manage tags, listen for, receive, and respond to tag changeset notifications, add and associate user metadata to check-ins, and mine resultant data according to your needs (e.g., to determine wait times, travel patterns).
+Combined with the ProxSee Admin Portal, the ProxSee SDK allows you to create and manage tags; listen for, receive, and respond to tag changeset notifications; add and associate user metadata to check-ins; and mine resultant data according to your needs (e.g. to determine wait times, travel patterns).
 
 ### How Does the ProxSee SDK Work? 
 
@@ -53,9 +53,9 @@ Along with monitoring the beacons/virtual beacons, the ProxSee SDK also queries 
 The ProxSee SDK allows your application to:
 
 - **Listen For and Receive Tag Changeset Notifications**: Your application can listen for and receive tag changeset notifications sent by the ProxSee SDK. You can update the tags and positional information associated to a beacon/virtual beacon through the ProxSee Admin Portal without having to update your ProxSee SDK or the physical, deployed beacons. See [Handle Tag Changeset Notifications](#handle-tag-changeset-notifications).
-- **Enable/Disable the ProxSee SDK**: The ProxSee SDK monitors beacons/virtual beacons, broadcasts check-ins/check-outs, sends tag changeset notifications, and updates metadata. At any point in your application, you can turn on or off the ProxSee SDK, which turns on or off monitoring. See [Enable/Disable the ProxSee SDK](#enabledisable-the-proxsee-sdk).
-- **Update Metadata**: You can send additional information about a user such as account information and user IDs to the ProxSee SDK. When the ProxSee SDK receives metadata it associates it with the user's check-ins, which helps you identify users and devices among the collected data. See [Update Metadata](#update-metadata). 
-- **Get Detected Beacons**: Any time in the application lifecycle after initialization, you can get alld detected beacons. See [Get Detected Beacons](#get-detected-beacons).
+- **Enable/Disable the ProxSee SDK**: The ProxSee SDK monitors beacons/virtual beacons, broadcasts check-ins/check-outs, sends tag changeset notifications, and updates metadata. At any point in your application, you can turn the ProxSee SDK on or off, which turns monitoring on or off. See [Enable/Disable the ProxSee SDK](#enabledisable-the-proxsee-sdk).
+- **Update Metadata**: You can send additional information about a user such as account information and user IDs to the ProxSee SDK. When the ProxSee SDK receives metadata, it associates it with the user's check-ins, which helps you identify users and devices among the collected data. See [Update Metadata](#update-metadata). 
+- **Get Detected Beacons**: Any time in the application lifecycle after initialization, you can get all detected beacons. See [Get Detected Beacons](#get-detected-beacons).
 
 ### Key Concepts
 
@@ -112,19 +112,20 @@ Data is stored during both a check-in and a check-out.
 
 Incorporating the ProxSee SDK into your iOS project is a simple three-step process:
 
-- [Generate a Mobile API Key](#generate-a-mobile-api-key)
-- [Add the ProxSee SDK to your iOS Project](#add-the-proxsee-sdk-to-your-ios-project)
-- [Launch the ProxSee SDK](#launch-the-proxsee-sdk)
+1. [Generate a Mobile API Key](#generate-a-mobile-api-key)
+2. [Add the ProxSee SDK to your iOS Project](#add-the-proxsee-sdk-to-your-ios-project)
+3. [Launch the ProxSee SDK](#launch-the-proxsee-sdk)
 
 ### Prerequisites
 
 The ProxSee SDK requires:
 
+- iOS 7+
 - An active Bluetooth service in order to function with the beacons/virtual beacons
 - Active Location in order to function with virtual beacons
-- An Internet connection for the initial run in order to register the device. Note that once the device has been registered, offline support is available. When offline:
-    - Check-ins/check-outs will be saved and sent when the Internet connection is restored. 
-    - Tags will be unavailable, unless the tags are available in cache. Note: Cached tags may be out-of-date.  
+- An Internet connection for the initial run, in order to register the device. Note that once the device has been registered, offline support is available. When offline:
+    - Check-ins/check-outs will be saved and sent when the Internet connection is restored 
+    - Tags will be unavailable, unless the tags are available in cache. Note: Cached tags may be out-of-date
 
 ### Generate a Mobile API Key
 
@@ -173,7 +174,7 @@ After the initial launch, on any application restart followed by a call for laun
 #import <LXProxSeeSDK/LXProxSeeSDK.h>
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-[LXProxSeeSDKManager launchProxSeeWithApiKey:@"YourApiKey"];
+[LXProxSeeSDKManager initializeWithApiKey:@"YourApiKey"];
 return YES;
 }
 
@@ -194,9 +195,9 @@ Any object can receive tag changeset notifications. Notifications are only sent 
 
 There are three steps to handling tag changeset notifications:
 
-- [Listen for Tag Changeset Notifications](#listen-for-tag-changeset-notifications)
-- [Receive Tag Changeset Notifications](#receive-tag-changeset-notifications)
-- [Remove the Observer](#remove-the-observer)
+1. [Listen for Tag Changeset Notifications](#listen-for-tag-changeset-notifications)
+2. [Receive Tag Changeset Notifications](#receive-tag-changeset-notifications)
+3. [Remove the Observer](#remove-the-observer)
 
 #### Listen for Tag Changeset Notifications
 
@@ -204,8 +205,11 @@ To start listening for tag changeset notifications, execute the following:
 
 ```
 #import <LXProxSeeSDK/LXProxSeeSDK.h>
+...
+@interface YourObject : NSObject<LXTagsReceiver> {
+...
 
-[self addProxSeeNotifcationObserver];  
+[[[LXProxSeeSDKManager sharedInstance] tagsManager] registerReceiver:self];
 
 ```
 
@@ -215,7 +219,7 @@ To start listening for tag changeset notifications, execute the following:
 To receive tag changeset notifications, implement the following:
 
 ```
-- (void) didChangeTagsSet:(LXProxSeeNotificationObject *)proximityNotificationObject {
+- (void) didChangeTagsSet:(LXTags *)tags {
 //execute your code
 }
 
@@ -225,7 +229,7 @@ To receive tag changeset notifications, implement the following:
 You will need to make sure to remove the observer before your object is de-allocated or your application will crash:
 
 ```
-[self removeProxSeeNotificationObserver];
+[[[LXProxSeeSDKManager sharedInstance] tagsManager] unregisterReceiver:self];
 
 ```
 
@@ -238,14 +242,14 @@ At any point of the application lifecycle you can enable or disable the ProxSee 
 - Notifying your application about tag changesets
 - Updating metadata
 
-Any explicit change to isMonitoringEnabled, will change the SDK mode accordingly. This will be used later on application restart when the launchProxSeeWithApiKey method is called to determine if the ProxSee SDK should start. 
+Explicitly calling enable/disable will change the SDK mode accordingly and persist between application restart. 
 
 #### Enable the ProxSee SDK
 
 To enable the ProxSee SDK and in turn enable beacon/virtual beacon monitoring, check-in/check-out broadcasts, tag changeset notifications, and metadata updates, execute the following:
 
 ```
-[LXProxSeeSDKManager sharedInstance].isMonitoringEnabled = YES;   
+[[LXProxSeeSDKManager sharedInstance] enable];
 
 ```
 #### Disable the ProxSee SDK
@@ -253,7 +257,7 @@ To enable the ProxSee SDK and in turn enable beacon/virtual beacon monitoring, c
 To disable the ProxSee SDK and in turn disable the monitoring of beacons as well as stop check-in/check-out broadcasts, tag changeset notifications, and metadata updates, execute the following:
 
 ```
-[LXProxSeeSDKManager sharedInstance].isMonitoringEnabled = NO;   
+[[LXProxSeeSDKManager sharedInstance] disable];
 
 ```
  
@@ -261,12 +265,12 @@ To disable the ProxSee SDK and in turn disable the monitoring of beacons as well
 
 While the function used is named updateMetadata, be aware that each update is stored as its own record and is fully versioned. As such, it is recommended that you only send metadata when it has changed. If the ProxSee SDK detects that the metadata has not changed from the previous request, it will not send the metadata; however, it will return a successful result to its CompletionHandler.
 
-The following example depicts how to add metadata (e.g., user IDs, user preferences), which will get associated to every check-in by the user. 
+The following example depicts how to add metadata (e.g. user IDs, user preferences), which will get associated to every check-in by the user. 
 
 **Note**: The key-value pairs are stored as a JSON object in the central platform. You may wish to design your representation so that it can be easily queried for reporting purposes. 
 
 ```
-[[LXProxSeeSDKManager sharedInstance] updateMetadata:@{ @"key" : @"value" } completionHandler:^(BOOL success, NSError *error) {
+[[[LXProxSeeSDKManager sharedInstance] tagsManager] updateMetadata:@{ @"key" : @"value" } completionHandler:^(BOOL success, NSError *error) {
 if (!success)
 {
 NSLog(@"Failed to update metadata %@",error);
@@ -284,7 +288,7 @@ NSLog(@"Successfully updated metadata");
 Any time in the application lifecycle after initialization, you can execute the following code to get all detected beacons.
 
 ```
-[[LXProxSeeSDKManager sharedInstance] fetchDetectedBeaconsWithCompletionHandler:^(NSSet *beacons) {
+[[[LXProxSeeSDKManager sharedInstance] beaconsManager] getDetectedBeaconsWithCompletionHandler:^(NSSet<LXProxSeeBeacon *> *beacons) {
        
 }];
 
@@ -292,10 +296,10 @@ Any time in the application lifecycle after initialization, you can execute the 
 
 ### Get Device ID
 
-Any time in the application lifecycle after initialization, you can execute the following code to get device id that uniquely identify your app in proxsee system.
+Any time in the application lifecycle after initialization, you can execute the following code to get device id that uniquely identifies your app in the ProxSee system.
 
 ```
-[[LXProxSeeSDKManager sharedInstance] fetchDeviceIdWithCompletionHandler:^(NSUUID *deviceId) {
+[[[LXProxSeeSDKManager sharedInstance] dataManager] getIdentifierWithCompletionHandler:^(NSUUID *deviceId) {
 
 }];
 

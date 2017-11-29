@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import  <LXProxSeeSDK/LXProxSeeSDK.h>
 
-@interface AppDelegate ()
+@interface AppDelegate () <LXTagsReceiver>
 
 @end
 
@@ -25,13 +25,11 @@
     }
     
 #warning You need to provide ProxSee Api Key.
-    [LXProxSeeSDKManager launchProxSeeWithApiKey:@""];
-     [self addProxSeeNotifcationObserver];
+    [LXProxSeeSDKManager initializeWithApiKey:@""];
+    [[[LXProxSeeSDKManager sharedInstance] tagsManager] registerReceiver:self];
     
-    /*
-     * Updating Metdata Sample.
-     *
-    [[LXProxSeeSDKManager sharedInstance] updateMetadata:@{ @"key" : @"value" } completionHandler:^(BOOL success, NSError *error) {
+   
+    [[[LXProxSeeSDKManager sharedInstance] metadataManager] updateMetadata:@{ @"key" : @"value" } completionHandler:^(BOOL success, NSError *error) {
         if (!success)
         {
             NSLog(@"Failed to update metadata %@",error);
@@ -41,8 +39,6 @@
             NSLog(@"Successfully updated metadata");
         }
     }];
-     *
-     */
     return YES;
 }
 
@@ -68,7 +64,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (void) didChangeTagsSet:(LXProxSeeNotificationObject *)nObject
+- (void) didChangeTagsSet:(LXTags *)nObject
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"HH:mm:ss";
