@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 
-## [3.0.0] - 2017-11-30
+## [3.0.0] - 2017-11-29
 ### Changed
 - Change main api interfaces. Please view [3.0.0 Migration Guide](Docs/migration_to_3.0.0.md)  
 - Support foreground authorisation 
