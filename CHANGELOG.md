@@ -8,11 +8,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Change main api interfaces. Please view [3.0.0 Migration Guide](Docs/migration_to_3.0.0.md)  
 - Support foreground authorisation 
 
-## [2.5.1] - 2017-10-23
-
-### Added
-- Adding fetchDeviceId api to get Proxsee identifier
-
 ## [2.5.0] - 2017-08-03
 ### Changed
 - Changes required for ProxSee to work with iOS 10.3.+
