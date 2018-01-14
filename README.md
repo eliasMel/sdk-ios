@@ -270,7 +270,7 @@ The following example depicts how to add metadata (e.g. user IDs, user preferenc
 **Note**: The key-value pairs are stored as a JSON object in the central platform. You may wish to design your representation so that it can be easily queried for reporting purposes. 
 
 ```
-[[[LXProxSeeSDKManager sharedInstance] tagsManager] updateMetadata:@{ @"key" : @"value" } completionHandler:^(BOOL success, NSError *error) {
+[[[LXProxSeeSDKManager sharedInstance] metadataManager] updateMetadata:@{ @"key" : @"value" } completionHandler:^(BOOL success, NSError *error) {
 if (!success)
 {
 NSLog(@"Failed to update metadata %@",error);
